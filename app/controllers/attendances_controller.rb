@@ -21,7 +21,7 @@ class AttendancesController < ApplicationController
       end 
        
       if @attendance.save
-        redirect_to controller: :quizzes, action: :show, id:2
+        redirect_to controller: :quizzes, action: :show, id:1
         #redirect_to current_user
       else
         redirect_to :root_url
