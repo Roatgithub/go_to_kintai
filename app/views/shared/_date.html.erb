@@ -1,0 +1,27 @@
+<% date = Date.today
+weeks = ["月","火","水","木","金","土","日"] 
+index = date.strftime("%u").to_i 
+%>
+
+<button type="button" class="btn btn-dark w-100">
+  <h4><%= date.strftime("%Y年%-m月%-d日 #{weeks[index - 1]}曜日") %></h4>
+
+  <h4 id="RealtimeClock"></h4>
+  <script>
+  function set2fig (num){
+    var fig;
+      if(num < 10) {fig = "0" + num;}
+      else {fig = num;}
+      return fig;
+  }
+  function showClock() {
+    var nowTime = new Date(); 
+    var nowHour = set2fig(nowTime.getHours());
+    var nowMin  = set2fig(nowTime.getMinutes());
+    var nowSec  = set2fig(nowTime.getSeconds());
+    var msg = "現在時刻：" + nowHour + ":" + nowMin + ":" + nowSec;
+    document.getElementById("RealtimeClock").innerHTML = msg;
+  }
+  setInterval('showClock()',1000);
+  </script>
+</button>

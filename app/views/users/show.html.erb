@@ -1,0 +1,20 @@
+<button type="button" class="btn btn-light w-100">
+  <h3>企業：<%= @user.company %></h3>
+  <h3><%= @user.name %>のマイページ</h3>
+  <h3>メールアドレス：<%= @user.email %></h3>
+</button>
+
+<%= render 'shared/date' %>
+
+<div class="m-3">
+  <%= button_to '出勤', {:controller => "attendances", :action => "create"}, class: "btn btn-outline-success btn-lg w-100" %><br>
+  <%= button_to '退勤', {:controller => "attendances", :action => "create"}, class: "btn btn-outline-danger btn-lg w-100" %><br>
+</div>
+
+<div class="btn-group w-100" role="group" aria-label="Basic outlined example">
+  <%= link_to '勤怠状況一覧', attendances_path, class: 'btn btn-outline-info btn-lg' %><br>
+  <%= link_to 'ユーザー情報編集', edit_user_path, class: 'btn btn-outline-info btn-lg' %><br>
+  <% if current_user.is_admin? %>
+    <%= link_to 'クイズ一覧', quizzes_path, class: 'btn btn-outline-info btn-lg' %>
+  <% end %>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GoTo Kintai</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
+    
+    <% if logged_in? %>
+      <div class="navbar navbar-expand-lg btn-group w-100" role="group" aria-label="Basic outlined example">
+        <img src="/assets/logo.png" width="10" alt="" class="navbar-brand btn btn-warning btn-sm">
+        <%= link_to "マイページへ", user_path(current_user.id), class: 'btn btn-outline-warning btn-lg' %>
+        <%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: 'btn btn-outline-warning btn-lg' %>
+      </div>
+    <% else %>
+      <div class="navbar navbar-expand-lg btn-group w-100" role="group" aria-label="Basic outlined example">
+        <img src="/assets/logo.png" width="10" alt="" class="navbar-brand btn btn-warning btn-sm">
+        <%= link_to "新規登録する", new_user_path, class: 'btn btn-outline-warning btn-lg' %>
+        <%= link_to "ログイン", new_session_path, class: 'btn btn-outline-warning btn-lg' %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+  <footer>
+    <div class="fixed-bottom" style="height:20px; text-align: center">© Go To Kintai</div>
+  </footer>
+</html>

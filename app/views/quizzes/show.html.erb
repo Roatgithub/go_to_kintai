@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h4>
+  <strong>問題:</strong>
+  <%= @quiz.question %>
+</h4>
+
+<h4>
+  <strong>写真:</strong>
+  <br>
+  <%#= link_to @quiz.image.filename, @quiz.image if @quiz.image.attached? %>
+  <%= image_tag @quiz.image.variant(resize_to_limit: [600, 600]) if @quiz.image.attached? %>
+</h4>
+
+<h4>
+  <strong>解答:</strong>
+  <%= @quiz.answer %>
+</h4>
+
+<% if current_user == @user || current_user.is_admin? %>
+  <%= link_to '編集', edit_quiz_path(@quiz), class: 'btn btn-outline-info btn-lg' %>
+  <%= link_to 'クイズ一覧に戻る', quizzes_path, class: 'btn btn-outline-info btn-lg'  %>
+<% end %>
+

@@ -1,0 +1,30 @@
+<h1>検索結果</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">方面</th>
+      <th scope="col">問題</th>
+      <th scope="col">写真</th>
+      <th scope="col">画像ファイル</th>
+      <th scope="col">解答</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |quiz| %>
+      <tr>
+      <td><%= quiz.destination %></td>
+      <td><%= quiz.question %></td>
+      <td><%= image_tag quiz.image.variant(resize_to_limit: [200, 200]) if quiz.image.attached? %></td>
+      <td><%= link_to quiz.image.filename, quiz.image if quiz.image.attached? %></td>
+      <td><%= quiz.answer %></td>
+      <td><%= link_to '詳細表示', quiz , class: 'btn btn-primary' %></td>
+      <td><%= link_to '編集', edit_quiz_path(quiz), class: 'btn btn-primary' %></td>
+      <td><%= link_to '削除', quiz, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-primary'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'クイズ一覧に戻る', quizzes_path, class: 'btn btn-outline-info btn-lg'  %>
