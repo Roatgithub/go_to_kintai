@@ -6,8 +6,7 @@
         f.datetime_select( 
           :start_at,
           {
-            start_year: Time.zone.now.prev_year.year,
-            end_year: Time.zone.now.next_year.year,
+            discard_year: true,
             default: Time.zone.now,
             use_two_digit_numbers: true,
             date_separator: '%s',
@@ -15,16 +14,15 @@
             time_separator: '%s'
           },
         ),
-        '年 ', '月 ', '日 ', '時 ') +'分'
+        '月 ', '日 ', '時 ') +'分'
       %><br>
       
-      <%= f.label :start, '退勤時刻' %>
+      <%= f.label :end, '退勤時刻' %>
       <%= raw sprintf(
         f.datetime_select( 
-          :start_at,
+          :end_at,
           {
-            start_year: Time.zone.now.prev_year.year,
-            end_year: Time.zone.now.next_year.year,
+            discard_year: true,
             default: Time.zone.now,
             use_two_digit_numbers: true,
             date_separator: '%s',
@@ -32,7 +30,7 @@
             time_separator: '%s'
           },
         ),
-        '年 ', '月 ', '日 ', '時 ') + '分'
+        '月 ', '日 ', '時 ') + '分'
       %><br>
       
       <% if current_user.is_admin? %>

@@ -44,9 +44,10 @@ class AttendancesController < ApplicationController
         flash[:success] = "勤怠の修正を申請しました！"
         redirect_to attendances_path
       else
-        render 'edit'
+        flash[:danger] = "日時を確認してください"
+        redirect_to request.referer
       end
-    end
+    end 
     
     def destroy
       @attendance.destroy
