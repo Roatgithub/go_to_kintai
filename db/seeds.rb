@@ -87,3 +87,6 @@ quiz = Quiz.create!(
 quiz.image.attach(io: File.open(Rails.root.join('app/assets/images/quiz5.jpg')),
                  filename: 'quiz5.jpg'
 )
+ActiveRecord::Base.connection.tables.each do |t|
+    ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
