@@ -1,7 +1,7 @@
 User.create!(
     company: "123",
     name: "user1",
-    email: "user1gotokintai@sample.com",
+    email: "user1goto@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: true
@@ -10,7 +10,7 @@ User.create!(
 User.create!(
     company: "123",
     name: "user2",
-    email: "user2gotokintai@sample.com",
+    email: "user2goto@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
@@ -19,7 +19,7 @@ User.create!(
 User.create!(
     company: "123",
     name: "user3",
-    email: "user3gotokintai@sample.com",
+    email: "user3goto@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
@@ -28,7 +28,7 @@ User.create!(
 User.create!(
     company: "123",
     name: "user4",
-    email: "user4gotokintai@sample.com",
+    email: "user4goto@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
@@ -37,7 +37,7 @@ User.create!(
 User.create!(
     company: "123",
     name: "user5",
-    email: "user5gotokintai@sample.com",
+    email: "user5goto@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
