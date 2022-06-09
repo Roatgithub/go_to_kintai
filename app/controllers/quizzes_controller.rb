@@ -10,7 +10,6 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/1 or /quizzes/1.json
   def show
-    @quizzes = Quiz.order("RANDOM()").limit(1)
   end
 
   # GET /quizzes/new
@@ -41,7 +40,7 @@ class QuizzesController < ApplicationController
   def update
     respond_to do |format|
       if @quiz.update(quiz_params)
-        format.html { redirect_to quiz_url(@quiz), notice: "Quiz was successfully updated." }
+        format.html { redirect_to quiz_url(@quiz), notice: "クイズを更新しました！" }
         format.json { render :show, status: :ok, location: @quiz }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +54,7 @@ class QuizzesController < ApplicationController
     @quiz.destroy
 
     respond_to do |format|
-      format.html { redirect_to quizzes_url, notice: "Quiz was successfully destroyed." }
+      format.html { redirect_to quizzes_url, notice: "クイズを削除しました！" }
       format.json { head :no_content }
     end
   end

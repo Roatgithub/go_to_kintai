@@ -3,10 +3,10 @@ weeks = ["月","火","水","木","金","土","日"]
 index = date.strftime("%u").to_i 
 %>
 
-<button type="button" class="btn btn-dark w-100">
-  <h4><%= date.strftime("%Y年%-m月%-d日 #{weeks[index - 1]}曜日") %></h4>
 
-  <h4 id="RealtimeClock"></h4>
+<h3><%= date.strftime("%Y年%-m月%-d日 #{weeks[index - 1]}曜日") %></h3>
+
+  <h3 id="RealtimeClock"></h3>
   <script>
   function set2fig (num){
     var fig;
@@ -24,4 +24,3 @@ index = date.strftime("%u").to_i
   }
   setInterval('showClock()',1000);
   </script>
-</button>

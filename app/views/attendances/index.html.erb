@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<button type="button" class="btn btn-light w-100">
-  <h3>勤怠状況一覧</h3>
+<button type="button" class="btn btn-dark w-100">
+  <h2>勤怠状況一覧 (降順)</h2>
+  <%= render 'shared/date' %>
 </button> 
 
-<%= render 'shared/date' %>
-
 <div class="pagination justify-content-center">
-  <h4><%= paginate @attendances %></h4>
+  <h5><%= paginate @attendances %></h5>
 </div>
 
 <table class="table">
@@ -63,12 +62,12 @@
           </td>
           
           <td>
-            <%= link_to '編集', edit_attendance_path(attendance) , class: 'btn btn-primary' %>
+            <%= link_to '編集', edit_attendance_path(attendance) , class: 'btn btn-outline-warning' %>
           </td>
 
           <td>
             <% if current_user.is_admin? %>
-              <%= link_to "削除", attendance, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-primary' %>
+              <%= link_to "削除", attendance, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-outline-warning' %>
             <% end %>
           </td>
         </tr>

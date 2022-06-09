@@ -10,6 +10,7 @@
 * $ bundle install
 * $ rails db:create
 * $ rails db:migrate
+* $ rails db:seed
 * $ rails s
 
 ## [カタログ設計](https://docs.google.com/spreadsheets/d/19C4jYQUHvcWNoEyrdknT5TROB1Ckb6VGghVAAy_JXpE/edit?usp=sharing)
@@ -31,11 +32,11 @@
 ## 管理者ユーザ (user1)
 * company: 123
 * name: user1
-* Email: user1@sample.com
+* Email: user1kintai@sample.com
 * PW: password
 
 ## 一般ユーザ (user2-5)
 * company: 123
 * name: user(2~5)
-* Email: user(2~5)@sample.com
+* Email: user(2~5)kintai@sample.com
 * PW: password

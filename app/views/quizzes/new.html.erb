@@ -1,9 +1,7 @@
 <% if current_user.is_admin? %>
-  <button type="button" class="btn btn-light w-100">
-    <h1>クイズ新規登録</h1>
-
+  <button type="button" class="btn btn-dark w-100">
+    <h3>クイズ新規登録</h3>
     <%= render 'form', quiz: @quiz %>
-
-    <%= link_to 'クイズ一覧に戻る', quizzes_path ,class: 'btn btn-primary' %>
+    <%= link_to 'クイズ一覧に戻る', quizzes_path ,class: 'btn btn-outline-warning' %>
   </button>
 <% end %>

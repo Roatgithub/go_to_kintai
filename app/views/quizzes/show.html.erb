@@ -1,24 +1,31 @@
-<p id="notice"><%= notice %></p>
+<button type="button" class="btn btn-dark w-100">
+  <h5>
+    <strong>方面：</strong>
+    <%= @quiz.destination %>
+  </h5>
 
-<h4>
-  <strong>問題:</strong>
-  <%= @quiz.question %>
-</h4>
+  <h5>
+    <strong>問題:</strong>
+    <%= @quiz.question %>
+  </h5>
 
-<h4>
-  <strong>写真:</strong>
-  <br>
-  <%#= link_to @quiz.image.filename, @quiz.image if @quiz.image.attached? %>
-  <%= image_tag @quiz.image.variant(resize_to_limit: [600, 600]) if @quiz.image.attached? %>
-</h4>
+  <h5>
+    <%#= link_to @quiz.image.filename, @quiz.image if @quiz.image.attached? %>
+    <%= image_tag @quiz.image.variant(resize_to_limit: [500, 500]) if @quiz.image.attached? %>
+  </h5>
 
-<h4>
-  <strong>解答:</strong>
-  <%= @quiz.answer %>
-</h4>
+
+  <div class="dropdown">
+    <button class="btn btn-warning btn-lg m-1 dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    答えはこちら！
+    </button>
+    <div class="dropdown-menu" p-4 text-muted" style="max-width: 600px;">
+      <p class="m-3"><%= @quiz.answer %></p>
+    </div>
+  </div>
+</button>
 
 <% if current_user == @user || current_user.is_admin? %>
-  <%= link_to '編集', edit_quiz_path(@quiz), class: 'btn btn-outline-info btn-lg' %>
-  <%= link_to 'クイズ一覧に戻る', quizzes_path, class: 'btn btn-outline-info btn-lg'  %>
+    <%= link_to '編集', edit_quiz_path(@quiz), class: 'btn btn-outline-info btn-lg m-1' %>
+    <%= link_to 'クイズ一覧に戻る', quizzes_path, class: 'btn btn-outline-info btn-lg m-1' %>
 <% end %>
-

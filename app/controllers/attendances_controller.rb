@@ -1,10 +1,10 @@
 class AttendancesController < ApplicationController
     before_action :correct_user, only: [:show, :destroy]
     skip_before_action :login_required, only: [:new, :create]
-
+    
     def index
       @attendances = Attendance.all
-      @attendances = Attendance.order(:created_at).page(params[:page])
+      @attendances = Attendance.order("created_at DESC").page(params[:page])
     end
 
     def create
@@ -20,12 +20,9 @@ class AttendancesController < ApplicationController
         flash[:danger] = "#{Time.zone.now.strftime("%H:%M")}に退勤しました！勤務実績：#{@attendance.start_at.strftime("%H:%M")}～#{@attendance.end_at.strftime("%H:%M")} お疲れ様です！"
       end 
        
-      if @attendance.save
-        redirect_to controller: :quizzes, action: :show, id:1
-        #redirect_to current_user
-      else
-        redirect_to :root_url
-      end
+      @attendance.save
+      redirect_to controller: :quizzes, action: :index
+      #redirect_to current_user
     end
     
     def edit

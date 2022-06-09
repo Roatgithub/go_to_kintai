@@ -1,31 +1,29 @@
 <% if current_user.is_admin? %>
-  <button type="button" class="btn btn-light w-100">
+  <button type="button" class="btn btn-dark w-100">
     <h3>クイズ一覧</h3>
-    <h3><%= link_to 'クイズ新規登録', new_quiz_path, class: 'btn btn-primary'%></h4>
-  
+    <h3><%= link_to 'クイズ新規登録', new_quiz_path, class: 'btn btn-outline-warning'%></h4>
     <%= search_form_for @q, url: search_quizzes_path do |f| %>
-      <div class="form-check">
+      <div class="form-check form-check-inline">
         <%= f.radio_button :destination_eq, '' %>指定なし
       </div>
-      <div class="form-check">
+      <div class="form-check form-check-inline">
         <%= f.radio_button :destination_eq, 0 %>Asia
       </div>
-      <div class="form-check">
+      <div class="form-check form-check-inline">
         <%= f.radio_button :destination_eq, 1 %>Europe
       </div>
-      <div class="form-check">
+      <div class="form-check form-check-inline">
         <%= f.radio_button :destination_eq, 2 %>Oceania
       </div>
-      <div class="form-check">
+      <div class="form-check form-check-inline">
         <%= f.radio_button :destination_eq, 3 %>Americas
       </div>
-      <div class="form-check">
+      <div class="form-check form-check-inline">
         <%= f.radio_button :destination_eq, 4 %>Africa
       </div>
-      <%= f.submit '方面別検索', class: "btn btn-success" %>
+      <%= f.submit '方面別検索', class: "btn btn-outline-success" %>
     <% end %>
   </button>
-
   <div class="pagination justify-content-center">
     <h4><%= paginate @quizzes %></h4>
   </div>
@@ -49,12 +47,31 @@
             <td><%= quiz.question %></td>
             <td><%= image_tag quiz.image.variant(resize_to_limit: [200, 200]) if quiz.image.attached? %></td>
             <td><%= link_to quiz.image.filename, quiz.image if quiz.image.attached? %></td>
-            <td><%= quiz.answer %></td>
-            <td><%= link_to '詳細表示', quiz, class: 'btn btn-primary' %></td>
-            <td><%= link_to '編集', edit_quiz_path(quiz), class: 'btn btn-primary' %></td>
-            <td><%= link_to '削除', quiz, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-primary'%></td>
+            <td><%= quiz.answer.truncate(50) %></td>
+            <td><%= link_to '詳細表示', quiz, class: 'btn btn-outline-warning' %></td>
+            <td><%= link_to '編集', edit_quiz_path(quiz), class: 'btn btn-outline-warning' %></td>
+            <td><%= link_to '削除', quiz, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-outline-warning'%></td>
           </tr>
         <% end %>
       </tbody>
   </table>
+<% else %>
+  <script>
+  f_redirect();
+  function f_redirect() {
+  var arr = [
+     'http://localhost:3000/quizzes/1',
+     'http://localhost:3000/quizzes/2',
+     'http://localhost:3000/quizzes/3',
+     'http://localhost:3000/quizzes/4',
+     'http://localhost:3000/quizzes/5',
+     'http://localhost:3000/quizzes/6',
+     'http://localhost:3000/quizzes/7'
+  ];
+  var num = arr.length;
+  if (arr.length == 0) return false;
+  var num = Math.floor(Math.random() * arr.length);
+  location.href = arr[num];
+  }
+  </script>
 <% end %>

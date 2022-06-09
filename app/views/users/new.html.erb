@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-light w-100">
-  <h1>新規登録</h1>
+  <h3>新規登録</h3>
 
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -25,11 +25,12 @@
       <%= f.label :パスワード %>
       <%= f.password_field :password, class: "form-control"  %>
   
-      <div class="mb-1">
-        <%= f.label :パスワード再入力 %>
-        <%= f.password_field :password_confirmation, class: "form-control"  %>
-      </div>
-      <%= f.submit "新規登録する", class: 'btn btn-primary' %>
-      <%= link_to "戻る", new_session_path, class: 'btn btn-info' %>
+      <%= f.label :パスワード再入力 %>
+      <%= f.password_field :password_confirmation, class: "form-control"  %>
+      
+    <div class="btn-group w-100" role="group" aria-label="Basic outlined example">
+      <%= f.submit "新規登録する", class: 'btn btn-outline-warning btn-lg' %>  
+      <%= link_to "戻る", new_session_path, class: 'btn btn-outline-info btn-lg' %>
+    </div>
   <% end %>
 </button>

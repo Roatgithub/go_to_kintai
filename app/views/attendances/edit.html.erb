@@ -1,7 +1,8 @@
-<h1>勤怠編集</h1>
+<button type="button" class="btn btn-dark w-100">
+  <h3>勤怠編集</h3>
 
-    <%= form_for(@attendance) do |f| %>
-      <%= f.label :start, '出勤時刻' %>
+    <h4><%= form_for(@attendance) do |f| %>
+      <%= f.label :start, '出勤時刻', class: 'm-3' %>
       <%= raw sprintf(
         f.datetime_select( 
           :start_at,
@@ -17,7 +18,7 @@
         '月 ', '日 ', '時 ') +'分'
       %><br>
       
-      <%= f.label :end, '退勤時刻' %>
+      <%= f.label :end, '退勤時刻', class: 'm-3' %>
       <%= raw sprintf(
         f.datetime_select( 
           :end_at,
@@ -31,13 +32,14 @@
           },
         ),
         '月 ', '日 ', '時 ') + '分'
-      %><br>
+      %></h4><br>
       
       <% if current_user.is_admin? %>
-        <%= f.submit "更新", class: "btn btn-primary" %>
+        <%= f.submit "更新", class: "btn btn-outline-warning btn-lg m-3" %><br>
       <% else %>
-        <%= f.submit "提出", class: "btn btn-primary" %>
+        <%= f.submit "提出", class: "btn btn-outline-warning btn-lg m-3" %><br>
       <% end %>
       
-      <%= link_to '勤怠状況一覧に戻る', attendances_path, class: "btn btn-primary" %>
+      <%= link_to '勤怠状況一覧に戻る', attendances_path, class: "btn btn-outline-warning" %>
     <% end %>  
+</button>
