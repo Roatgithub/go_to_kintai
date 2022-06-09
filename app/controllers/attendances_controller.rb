@@ -22,7 +22,6 @@ class AttendancesController < ApplicationController
        
       @attendance.save
       redirect_to controller: :quizzes, action: :index
-      #redirect_to current_user
     end
     
     def edit
@@ -44,7 +43,7 @@ class AttendancesController < ApplicationController
         flash[:danger] = "日時を確認してください"
         redirect_to request.referer
       end
-    end 
+    end
     
     def destroy
       @attendance.destroy

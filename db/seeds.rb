@@ -1,7 +1,7 @@
 User.create!(
     company: "123",
     name: "user1",
-    email: "user1_kintai@sample.com",
+    email: "user1kintai@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: true
@@ -10,7 +10,7 @@ User.create!(
 User.create!(
     company: "123",
     name: "user2",
-    email: "user2_kintai@sample.com",
+    email: "user2kintai@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
@@ -19,7 +19,7 @@ User.create!(
 User.create!(
     company: "123",
     name: "user3",
-    email: "user3_kintai@sample.com",
+    email: "user3kintai@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
@@ -28,7 +28,7 @@ User.create!(
 User.create!(
     company: "123",
     name: "user4",
-    email: "user4_kintai@sample.com",
+    email: "user4kintai@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
@@ -37,7 +37,7 @@ User.create!(
 User.create!(
     company: "123",
     name: "user5",
-    email: "user5_kintai@sample.com",
+    email: "user5kintai@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
@@ -107,6 +107,6 @@ quiz.image.attach(io: File.open(Rails.root.join('app/assets/images/quiz7.jpg')),
 )
 
 
-ActiveRecord::Base.connection.tables.each do |t|
-    ActiveRecord::Base.connection.reset_pk_sequence!(t)
-end
+#ActiveRecord::Base.connection.tables.each do |t|
+#    ActiveRecord::Base.connection.reset_pk_sequence!(t)
+#end

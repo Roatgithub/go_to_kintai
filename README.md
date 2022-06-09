@@ -18,25 +18,10 @@
 ## [テーブル定義](https://docs.google.com/spreadsheets/d/19C4jYQUHvcWNoEyrdknT5TROB1Ckb6VGghVAAy_JXpE/edit?usp=sharing)
 
 ## ワイヤーフレーム
-![goto_kintai_wireflame](https://user-images.githubusercontent.com/103027606/172109315-031ab7dd-5b1c-4c3a-ac9c-611640d5fcfb.png)
-
+![goto_kintai_wireflame](https://user-images.githubusercontent.com/103027606/172785656-26a999a8-a502-4367-89b1-4e4863fc1370.png)
 
 ## ER図
-![go_to_kintai_ER](https://user-images.githubusercontent.com/103027606/172109219-d250df5b-1d5a-4b33-b9ce-a9b2a15ef13e.png)
-
+![go_to_kintai_ER](https://user-images.githubusercontent.com/103027606/172785747-7deb194b-09ab-40a7-8fd8-b4dcba413382.png)
 
 ## 画面遷移図
-![go_to_kintai_screen](https://user-images.githubusercontent.com/103027606/172109287-6dde2812-d8b3-46c5-938b-8fe27397c50c.png)
-
-
-## 管理者ユーザ (user1)
-* company: 123
-* name: user1
-* Email: user1_kintai@sample.com
-* PW: password
-
-## 一般ユーザ (user2-5)
-* company: 123
-* name: user(2~5)
-* Email: user(2~5)_kintai@sample.com
-* PW: password
+![go_to_kintai_screen](https://user-images.githubusercontent.com/103027606/172785691-cc3bc6ab-1199-42a5-99b7-69d28084a684.png)
