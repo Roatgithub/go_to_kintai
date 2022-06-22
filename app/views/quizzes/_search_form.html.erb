@@ -1,0 +1,21 @@
+<%= search_form_for @q, url: search_quizzes_path do |f|%>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :destination_eq, '' %>指定なし
+    </div>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :destination_eq, 0 %>Asia
+    </div>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :destination_eq, 1 %>Europe
+    </div>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :destination_eq, 2 %>Oceania
+    </div>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :destination_eq, 3 %>Americas
+    </div>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :destination_eq, 4 %>Africa
+    </div>
+    <%= f.submit '方面別検索', class: "btn btn-outline-primary btn-lg" %>
+<% end %>

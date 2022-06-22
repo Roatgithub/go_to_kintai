@@ -14,14 +14,17 @@ class AttendancesController < ApplicationController
     
       if (!started && !ended) || (started && ended)
         @attendance = current_user.attendances.build(start_at: Time.zone.now)
-        flash[:success] = "#{Time.zone.now.strftime("%H:%M")}に出勤しました！おはようございます！"
       elsif started && !ended
         @attendance.end_at = Time.zone.now
-        flash[:danger] = "#{Time.zone.now.strftime("%H:%M")}に退勤しました！勤務実績：#{@attendance.start_at.strftime("%H:%M")}～#{@attendance.end_at.strftime("%H:%M")} お疲れ様です！"
       end 
-       
-      @attendance.save
-      redirect_to controller: :quizzes, action: :index
+      
+      if @attendance.save
+        redirect_to controller: :quizzes, action: :show, id: (random)
+        flash[:success] = "#{Time.zone.now.strftime("%H:%M")}に打刻しました。"
+      else
+        redirect_to request.referer
+        flash[:danger] = "本日はすでに打刻済みです。"
+      end
     end
     
     def edit
@@ -29,7 +32,7 @@ class AttendancesController < ApplicationController
       if @attendance.user == current_user || current_user.is_admin
           render "edit"
       else
-        flash[:danger] = "他人の勤怠を編集する事ができません！"
+        flash[:danger] = "他人の勤怠を編集する権限ができません。"
         redirect_to attendances_path
       end
     end
@@ -37,19 +40,11 @@ class AttendancesController < ApplicationController
     def update
       @attendance = Attendance.find(params[:id])
       if @attendance.update(attendance_params)
-        flash[:success] = "勤怠の修正を申請しました！"
+        flash[:success] = "勤怠の修正を申請しました。"
         redirect_to attendances_path
       else
-        flash[:danger] = "日時を確認してください"
+        flash[:danger] = "時間を確認してください。"
         redirect_to request.referer
-      end
-    end
-    
-    def destroy
-      @attendance.destroy
-      respond_to do |format|
-        format.html { redirect_to attendances_url, notice: "削除しました" }
-        format.json { head :no_content }
       end
     end
 

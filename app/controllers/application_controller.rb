@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include AttendancesHelper
   before_action :login_required
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404

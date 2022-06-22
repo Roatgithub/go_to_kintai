@@ -1,31 +1,33 @@
-<button type="button" class="btn btn-dark w-100">
-  <h5>
+<div class="w-100 d-flex flex-column align-items-center">
+  <h4>
     <strong>方面：</strong>
     <%= @quiz.destination %>
-  </h5>
-
-  <h5>
-    <strong>問題:</strong>
+  </h4>
+  
+  <h4>
+    <strong>Q:</strong>
     <%= @quiz.question %>
-  </h5>
+  </h4>
 
-  <h5>
+  <h4 id="timer"><span id="count" class="text-primary">5</span>秒後に答え合わせ</h4>
+ 
+  <div>
     <%#= link_to @quiz.image.filename, @quiz.image if @quiz.image.attached? %>
-    <%= image_tag @quiz.image.variant(resize_to_limit: [500, 500]) if @quiz.image.attached? %>
-  </h5>
-
-
-  <div class="dropdown">
-    <button class="btn btn-warning btn-lg m-1 dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    答えはこちら！
-    </button>
-    <div class="dropdown-menu" p-4 text-muted" style="max-width: 600px;">
-      <p class="m-3"><%= @quiz.answer %></p>
-    </div>
+    <%= image_tag @quiz.image.variant(resize_to_limit: [400, 400]) if @quiz.image.attached? %>
   </div>
-</button>
 
-<% if current_user == @user || current_user.is_admin? %>
-    <%= link_to '編集', edit_quiz_path(@quiz), class: 'btn btn-outline-info btn-lg m-1' %>
-    <%= link_to 'クイズ一覧に戻る', quizzes_path, class: 'btn btn-outline-info btn-lg m-1' %>
-<% end %>
+  <div id="answer" style="display: none;">
+    <p class="m-3 btn btn-success btn-lg"><%= @quiz.answer %></p>
+  </div>
+ 
+  <script>
+   var count = document.getElementById("count");
+    setInterval(function(){count.innerHTML--;},1000);
+    setTimeout(function(){document.getElementById("answer").style.display="block";},5000);
+    setTimeout(function(){document.getElementById("timer").style.display="none";},5000);
+  </script>
+ 
+  <% if current_user == @user || current_user.is_admin? %>
+    <%= link_to 'クイズ一覧に戻る', quizzes_path, class: 'btn btn-outline-primary btn-lg m-3' %>
+  <% end %>
+</div>

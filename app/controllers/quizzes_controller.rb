@@ -5,7 +5,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes or /quizzes.json
   def index
     @quizzes = @q.result
-    @quizzes = Quiz.order(:created_at).page(params[:page])
+    @quizzes = Quiz.order(:created_at).page(params[:page]) 
   end
 
   # GET /quizzes/1 or /quizzes/1.json
@@ -27,7 +27,7 @@ class QuizzesController < ApplicationController
 
     respond_to do |format|
       if @quiz.save
-        format.html { redirect_to quiz_url(@quiz), notice: "クイズを登録しました！" }
+        format.html { redirect_to quiz_url(@quiz), notice: "登録しました。" }
         format.json { render :show, status: :created, location: @quiz }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class QuizzesController < ApplicationController
   def update
     respond_to do |format|
       if @quiz.update(quiz_params)
-        format.html { redirect_to quiz_url(@quiz), notice: "クイズを更新しました！" }
+        format.html { redirect_to quiz_url(@quiz), notice: "更新しました。" }
         format.json { render :show, status: :ok, location: @quiz }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class QuizzesController < ApplicationController
     @quiz.destroy
 
     respond_to do |format|
-      format.html { redirect_to quizzes_url, notice: "クイズを削除しました！" }
+      format.html { redirect_to quizzes_url, notice: "削除しました。" }
       format.json { head :no_content }
     end
   end
@@ -73,7 +73,7 @@ class QuizzesController < ApplicationController
       @q = Quiz.ransack(params[:q])
     end
 
-   # Only allow a list of trusted parameters through.
+    # Only allow a list of trusted parameters through.
     def quiz_params
       params.require(:quiz).permit(:question, :answer, :image, :destination)
     end

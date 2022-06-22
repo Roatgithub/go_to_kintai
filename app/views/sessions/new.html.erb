@@ -1,14 +1,19 @@
-<button type="button" class="btn btn-light w-100">
+<div class="w-100 d-flex flex-column align-items-center">
   <h3>ログイン</h3>
   <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+    
     <div class="mb-3">
       <%= f.label :メールアドレス %>
       <%= f.email_field :email, class: "form-control" %>
     </div>
+    
     <div class="mb-3">
       <%= f.label :パスワード %>
-      <%= f.password_field :password, class: "form-control" %>
+      <%= f.password_field :password, class: "form-control", id:"pass" %>
+      <input type="checkbox" onChange="document.getElementById('pass').type = (this.checked) ? 'text' : 'password';">
+       パスワードを表示する
     </div>
-    <%= f.submit "ログイン", class: 'btn btn-outline-warning btn-lg' %>
+    
+    <%= f.submit "ログイン", class: 'btn btn-outline-primary btn-lg mb-3' %>
   <% end %>
-</button>
+</div>

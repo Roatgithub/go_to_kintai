@@ -1,6 +1,5 @@
-<button type="button" class="btn btn-dark w-100">
-  <h3>勤怠編集</h3>
-
+<div class="w-100 d-flex flex-column align-items-center">
+  <h3><%= @attendance.user.name %>の勤怠編集</h3>
     <h4><%= form_for(@attendance) do |f| %>
       <%= f.label :start, '出勤時刻', class: 'm-3' %>
       <%= raw sprintf(
@@ -8,14 +7,14 @@
           :start_at,
           {
             discard_year: true,
+            discard_month: true,
             default: Time.zone.now,
             use_two_digit_numbers: true,
-            date_separator: '%s',
             datetime_separator: '%s',
             time_separator: '%s'
           },
         ),
-        '月 ', '日 ', '時 ') +'分'
+        '時 ') + '分'
       %><br>
       
       <%= f.label :end, '退勤時刻', class: 'm-3' %>
@@ -24,22 +23,21 @@
           :end_at,
           {
             discard_year: true,
+            discard_month: true,
             default: Time.zone.now,
             use_two_digit_numbers: true,
-            date_separator: '%s',
             datetime_separator: '%s',
             time_separator: '%s'
           },
         ),
-        '月 ', '日 ', '時 ') + '分'
-      %></h4><br>
+        '時 ') + '分'
+      %><br>
       
       <% if current_user.is_admin? %>
-        <%= f.submit "更新", class: "btn btn-outline-warning btn-lg m-3" %><br>
+        <%= f.submit "更新", class: "btn btn-outline-primary btn-lg m-3" %><br>
       <% else %>
-        <%= f.submit "提出", class: "btn btn-outline-warning btn-lg m-3" %><br>
+        <%= f.submit "提出", class: "btn btn-outline-primary btn-lg m-3" %><br>
       <% end %>
-      
-      <%= link_to '勤怠状況一覧に戻る', attendances_path, class: "btn btn-outline-warning" %>
+      <%= link_to '勤怠状況一覧に戻る', attendances_path, class: "btn btn-outline-primary btn-lg m-3" %>
     <% end %>  
-</button>
+</div>

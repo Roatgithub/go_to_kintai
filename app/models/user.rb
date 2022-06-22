@@ -6,8 +6,8 @@ class User < ApplicationRecord
     has_secure_password
     validates :password, length: { minimum: 6 }
     has_many :attendances, dependent: :destroy
-    
+
     def today_attendance
-        Attendance.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day, user_id: id).first
+      Attendance.where(created_at: Time.zone.today.beginning_of_day..Time.zone.today.end_of_day, user_id: id).first
     end
 end

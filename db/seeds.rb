@@ -25,24 +25,6 @@ User.create!(
     is_admin: false
 )
 
-User.create!(
-    company: "123",
-    name: "user4",
-    email: "user4goto@sample.com",
-    password: "password",
-    password_confirmation: "password",
-    is_admin: false
-)
-
-User.create!(
-    company: "123",
-    name: "user5",
-    email: "user5goto@sample.com",
-    password: "password",
-    password_confirmation: "password",
-    is_admin: false
-)
-
 quiz = Quiz.create!(
     question: "シリア北部の都市アレッポでは、地場産業としてある日用品が盛んに製造されていることで有名です。それは何でしょうか？",
     answer: "＜石鹸＞  解説: シリア・アラブ共和国の『アレッポの旧市街』は、メソポタミアとヨーロッパをつなぐ要衝地として古くから栄えてきました。 石鹸の製造が盛んなことで有名で、その歴史は1,000年以上前にさかのぼるとも言われています。アレッポ石鹸は、オリーブオイルとローレルオイルで作られており、ヨーロッパや日本にも数多く輸出されています。 しかし、2011年から始まったシリア内戦によって街が壊滅的な被害を受け、多くの製造工場が閉鎖を余儀なくされました。 2013年からは危機遺産リストに記載されています。",

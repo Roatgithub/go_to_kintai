@@ -1,7 +1,7 @@
 <% if current_user.is_admin? %>
-  <button type="button" class="btn btn-dark w-100">
+  <div class="w-100 d-flex flex-column align-items-center">
     <h3>クイズを編集</h3>
+    <%= link_to 'クイズ一覧に戻る', quizzes_path, class: 'btn btn-outline-primary btn-lg mb-3' %>
     <%= render 'form', quiz: @quiz %>
-    <%= link_to 'クイズ一覧に戻る', quizzes_path, class: 'btn btn-outline-info mb-3' %>
-  </button>
+  </div>
 <% end %>

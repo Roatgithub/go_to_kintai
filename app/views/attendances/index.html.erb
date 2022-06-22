@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<button type="button" class="btn btn-dark w-100">
-  <h2>勤怠状況一覧 (降順)</h2>
+<div class="w-100 d-flex flex-column align-items-center">
+  <h3>勤怠状況一覧 (降順)</h3>
   <%= render 'shared/date' %>
-</button> 
+</div> 
 
 <div class="pagination justify-content-center">
   <h5><%= paginate @attendances %></h5>
 </div>
 
-<table class="table">
+<table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">名前</th>
@@ -18,59 +16,54 @@
         <th scope="col">退勤時間</th>
         <th scope="col">勤務時間</th>
         <th scope="col">編集</th>
-        <th scope="col">削除</th>
-        <th colspan="5"></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @attendances.each do |attendance| %>
-        <tr>
-          <td>
-            <% if attendance.user == current_user %>
-              <div class="p-3 bg-success text-white">
-                <%= "#{attendance.user.name} (自分)" %>
-              </div>
-            <% else %>
-              <%= attendance.user.name %>
-            <% end %>
-          </td>
+        <% @attendances.each do |attendance| %>
+          <tr>
+            <td>
+              <% if attendance.user == current_user %>
+                <div class="p-3 bg-primary text-light">
+                  <%= "#{attendance.user.name} (自分)" %>
+                </div>
+              <% else %>
+                <%= attendance.user.name %>
+              <% end %>
+            </td>
           
-          <td>
-            <%= attendance.start_at.strftime("%Y年%m月%d日") %>
-          </td>
+            <td>
+              <%= attendance.start_at.strftime("%Y年%m月%d日(%a)") %>
+            </td>
           
-          <td>
-            <% if attendance.start_at.present? %>
-              <%= attendance.start_at.strftime("%H:%M") %>
-            <% else %>まだ出勤打刻してないよ
-            <% end %>
-          </td>
+            <td>
+              <% if attendance.start_at.present? %>
+                <%= attendance.start_at.strftime("%H:%M") %>
+              <% else %>
+                <div class="p-3 bg-danger text-light">まだ出勤打刻していないよ</div>
+              <% end %>
+            </td>
           
-          <td>
-            <% if attendance.end_at.present? %>
-              <%= attendance.end_at.strftime("%H:%M") %>
-            <% else %>まだ退勤打刻してないよ！
-            <% end %>
-          </td>
+            <td>
+              <% if attendance.end_at.present? %>
+                <%= attendance.end_at.strftime("%H:%M") %>
+              <% else %>
+                <div class="p-3 bg-danger text-light">まだ退勤打刻していないよ</div>
+              <% end %>
+            </td>
           
-          <td>
-            <% if attendance.start_at.present? && attendance.end_at.present? %>
-              <%= "#{(attendance.time_diff / 3600).round}時間#{(attendance.time_diff / 60).round}分" %>
-            <% else %>打刻漏れ！
-            <% end %>
-          </td>
+            <td>
+              <% if attendance.start_at.present? && attendance.end_at.present? %>
+                <%= "#{(attendance.time_diff / 3600).round(1)}時間" %>
+              <% else %>
+                <div class="p-3 bg-danger text-light">打刻漏れ！</div>
+              <% end %>
+            </td>
           
-          <td>
-            <%= link_to '編集', edit_attendance_path(attendance) , class: 'btn btn-outline-warning' %>
-          </td>
-
-          <td>
-            <% if current_user.is_admin? %>
-              <%= link_to "削除", attendance, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-outline-warning' %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
+            <td>
+              <%= link_to '編集', edit_attendance_path(attendance), class: 'btn btn-outline-primary' %>
+            </td>
+          </tr>
+        <% end %>
     </tbody>
 </table>

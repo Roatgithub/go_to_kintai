@@ -1,15 +1,10 @@
 class Attendance < ApplicationRecord
   belongs_to :user
-  validates :user_id, presence: true
+  validates :created_at, uniqueness: {scope: :user_id}
   validate :start_end_check, on: :update
-  validate :start_end_date_check, on: :update
 
   def start_end_check
-    errors.add(:end_at, "") if self.end_at <= self.start_at
-  end
-
-  def start_end_date_check
-    errors.add(:end_at, "") unless end_at.strftime("%d") == start_at.strftime("%d")
+    errors.add(:end_at, "") if self.start_at >= self.end_at
   end
 
   def time_diff
