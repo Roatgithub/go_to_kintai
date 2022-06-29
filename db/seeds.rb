@@ -1,7 +1,7 @@
 User.create!(
     company: "123",
-    name: "user1",
-    email: "user1goto@sample.com",
+    name: "user1(管理者)",
+    email: "user1@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: true
@@ -10,7 +10,7 @@ User.create!(
 User.create!(
     company: "123",
     name: "user2",
-    email: "user2goto@sample.com",
+    email: "user2@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
@@ -19,7 +19,25 @@ User.create!(
 User.create!(
     company: "123",
     name: "user3",
-    email: "user3goto@sample.com",
+    email: "user3@sample.com",
+    password: "password",
+    password_confirmation: "password",
+    is_admin: false
+)
+
+User.create!(
+    company: "123",
+    name: "user4",
+    email: "user4@sample.com",
+    password: "password",
+    password_confirmation: "password",
+    is_admin: false
+)
+
+User.create!(
+    company: "123",
+    name: "user5",
+    email: "user5@sample.com",
     password: "password",
     password_confirmation: "password",
     is_admin: false
@@ -88,6 +106,14 @@ quiz.image.attach(io: File.open(Rails.root.join('app/assets/images/quiz7.jpg')),
                  filename: 'quiz7.jpg'
 )
 
+quiz = Quiz.create!(
+    question: "ニューヨークの『自由の女神像』が左手に持っているものは何でしょうか？",
+    answer: "＜独立宣言書＞  解説：ニューヨーク港に立つ自由の女神像は、左手に1776年7月4日と記された独立宣言書を抱えています。右手には希望を意味するたいまつを掲げ、奴隷制を象徴する鎖を踏みつけています。",
+    destination: 3
+)
+quiz.image.attach(io: File.open(Rails.root.join('app/assets/images/quiz8.jpg')),
+                 filename: 'quiz8.jpg'
+)
 
 #ActiveRecord::Base.connection.tables.each do |t|
 #    ActiveRecord::Base.connection.reset_pk_sequence!(t)

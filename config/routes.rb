@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
   resources :sessions, only:[:new, :create, :destroy]
   resources :users, only: [:new, :create, :show, :edit, :update]
-  resources :attendances, only:[:index, :create, :edit, :update, :destroy]
+  resources :attendances, only:[:index, :create, :edit, :update]
   resources :quizzes do
     collection do
       get 'search'

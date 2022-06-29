@@ -1,6 +1,6 @@
 <% if current_user.is_admin? %>
   <div class="w-100 d-flex flex-column align-items-center">
-    <h3>クイズ新規登録</h3>
+    <h4>クイズ新規登録</h4>
     <%= link_to 'クイズ一覧に戻る', quizzes_path ,class: 'btn btn-outline-primary btn-lg' %>
     <%= render 'form', quiz: @quiz %>  
   </div>

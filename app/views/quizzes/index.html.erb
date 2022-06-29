@@ -1,7 +1,7 @@
 <% if current_user.is_admin? %>
   <div class="w-100 d-flex flex-column align-items-center">
-    <h3>クイズ一覧</h3>
-    <h3><%= link_to 'クイズ新規登録', new_quiz_path, class: 'btn btn-outline-primary btn-lg' %></h4>
+    <h4>クイズ一覧</h4>
+    <h4><%= link_to 'クイズ新規登録', new_quiz_path, class: 'btn btn-outline-primary btn-lg' %></h4>
     <%= render 'search_form' %>
     <h4><%= paginate @quizzes %></h4>
   </div>

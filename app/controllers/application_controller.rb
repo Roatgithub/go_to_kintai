@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include AttendancesHelper
+  include UsersHelper
   before_action :login_required
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
@@ -16,7 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
     def login_required
       redirect_to new_session_path unless current_user
     end

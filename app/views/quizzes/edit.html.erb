@@ -1,6 +1,6 @@
 <% if current_user.is_admin? %>
   <div class="w-100 d-flex flex-column align-items-center">
-    <h3>クイズを編集</h3>
+    <h4>クイズを編集</h4>
     <%= link_to 'クイズ一覧に戻る', quizzes_path, class: 'btn btn-outline-primary btn-lg mb-3' %>
     <%= render 'form', quiz: @quiz %>
   </div>

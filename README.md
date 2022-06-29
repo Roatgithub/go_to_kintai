@@ -8,6 +8,7 @@
 * $ git clone git@github.com:Roatgithub/go_to_kintai.git
 * $ cd go_to_kintai
 * $ bundle install
+* $ yarn install --check-files
 * $ rails db:create
 * $ rails db:migrate
 * $ rails db:seed
