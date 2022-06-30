@@ -37,7 +37,7 @@ class AttendancesController < ApplicationController
         render "edit"
     else
       flash[:danger] = "権限がありません。"
-      redirect_to attendances_path
+      redirect_to request.referer
     end
   end
   

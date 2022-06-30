@@ -56,7 +56,7 @@
           <% if attendance.start_at.present? && attendance.end_at.present? %>
             <%= "#{(attendance.time_diff).round(1)}時間" %>
           <% else %>
-            <div class="p-3 bg-danger text-light">打刻漏れ</div>
+            <div class="p-3 bg-danger text-light">--</div>
           <% end %>
         </td>
         

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def render_500
     render template: 'errors/error_500', status: 500, layout: 'application', content_type: 'text/html'
   end
-
+  
   private
     def login_required
       redirect_to new_session_path unless current_user
