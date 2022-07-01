@@ -29,10 +29,10 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/rvm"
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
-require "capistrano/bundler"
-require "capistrano/rails/assets"
-require "capistrano/rails/migrations"
-require "capistrano/safe_deploy_to"
+ require "capistrano/bundler"
+ require "capistrano/rails/assets"
+ require "capistrano/rails/migrations"
+ require "capistrano/safe_deploy_to"
 require 'capistrano3/unicorn'
 # require "capistrano/passenger"
 
