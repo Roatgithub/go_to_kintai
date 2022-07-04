@@ -34,7 +34,7 @@ class AttendancesController < ApplicationController
   def edit
     @attendance = Attendance.find(params[:id])
     if @attendance.user == current_user || current_user.is_admin
-        render "edit"
+      render "edit"
     else
       flash[:danger] = "権限がありません。"
       redirect_to request.referer

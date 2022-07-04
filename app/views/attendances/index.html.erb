@@ -7,63 +7,127 @@
   <h4><%= paginate @attendances %></h4>
 </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">名前</th>
-      <th scope="col">出勤日</th>
-      <th scope="col">出勤時間</th>
-      <th scope="col">退勤時間</th>
-      <th scope="col">勤務時間</th>
-      <th scope="col">編集</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @attendances.each do |attendance| %>
+<% if current_user.is_admin? %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td>
-          <% if attendance.user == current_user %>
-            <div class="p-3 bg-primary text-light">
-              <%= "★#{attendance.user.name}" %>
-            </div>
-          <% else %>
-            <%= attendance.user.name %>
-          <% end %>
-        </td>
-          
-        <td>
-          <%= attendance.start_at.strftime("%Y年%m月%d日(%a)") %>
-        </td>
-          
-        <td>
-          <% if attendance.start_at.present? %>
-            <%= attendance.start_at.strftime("%H:%M") %>
-          <% else %>
-            <div class="p-3 bg-danger text-light">まだ出勤打刻していないよ</div>
-          <% end %>
-        </td>
-          
-        <td>
-          <% if attendance.end_at.present? %>
-            <%= attendance.end_at.strftime("%H:%M") %>
-          <% else %>
-            <div class="p-3 bg-danger text-light">まだ退勤打刻していないよ</div>
-          <% end %>
-        </td>
-          
-        <td>
-          <% if attendance.start_at.present? && attendance.end_at.present? %>
-            <%= "#{(attendance.time_diff).round(1)}時間" %>
-          <% else %>
-            <div class="p-3 bg-danger text-light">--</div>
-          <% end %>
-        </td>
-        
-        <td>
-          <%= link_to '編集', edit_attendance_path(attendance), class: 'btn btn-outline-primary' %>
-        </td>
+        <th scope="col">名前</th>
+        <th scope="col">出勤日</th>
+        <th scope="col">出勤時間</th>
+        <th scope="col">退勤時間</th>
+        <th scope="col">勤務時間</th>
+        <th scope="col">編集</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @attendances.each do |attendance| %>
+        <tr>
+          <td>
+            <%= attendance.user.name %>
+          </td>
+          
+          <td>
+            <%= attendance.start_at.strftime("%Y年%m月%d日(%a)") %>
+          </td>
+          
+          <td>
+            <% if attendance.start_at.present? %>
+              <%= attendance.start_at.strftime("%H:%M") %>
+            <% else %>
+              <div class="p-3 bg-danger text-light">まだ出勤打刻していないよ</div>
+            <% end %>
+          </td>
+          
+          <td>
+            <% if attendance.end_at.present? %>
+              <%= attendance.end_at.strftime("%H:%M") %>
+            <% else %>
+              <div class="p-3 bg-danger text-light">まだ退勤打刻していないよ</div>
+            <% end %>
+          </td>
+          
+          <td>
+            <% if attendance.start_at.present? && attendance.end_at.present? %>
+              <%= "#{(attendance.time_diff).round(1)}時間" %>
+            <% else %>
+              <div class="p-3 bg-danger text-light">--</div>
+            <% end %>
+          </td>
+        
+          <td>
+            <%= link_to '編集', edit_attendance_path(attendance), class: 'btn btn-outline-primary' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">名前</th>
+        <th scope="col">出勤日</th>
+        <th scope="col">出勤時間</th>
+        <th scope="col">退勤時間</th>
+        <th scope="col">勤務時間</th>
+        <th scope="col">編集</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @attendances.each do |attendance| %>
+        <tr>
+          <td>
+            <% if attendance.user == current_user %>
+              <%= attendance.user.name %>
+            <% end %>
+          </td>
+      
+          <td>
+            <% if attendance.user == current_user %>
+              <%= attendance.start_at.strftime("%Y年%m月%d日(%a)") %>
+            <% end %>
+          </td>
+      
+          <td>
+            <% if attendance.user == current_user %>
+              <% if attendance.start_at.present? %>
+                <%= attendance.start_at.strftime("%H:%M") %>
+              <% else %>
+                <div class="p-3 bg-danger text-light">まだ出勤打刻していないよ</div>
+              <% end %>
+            <% end %>
+          </td>
+      
+          <td>
+            <% if attendance.user == current_user %>
+              <% if attendance.end_at.present? %>
+                <%= attendance.end_at.strftime("%H:%M") %>
+              <% else %>
+                <div class="p-3 bg-danger text-light">まだ退勤打刻していないよ</div>
+              <% end %>
+            <% end %>
+          </td>
+      
+          <td>
+            <% if attendance.user == current_user %>
+              <% if attendance.start_at.present? && attendance.end_at.present? %>
+                <%= "#{(attendance.time_diff).round(1)}時間" %>
+              <% else %>
+                <div class="p-3 bg-danger text-light">--</div>
+              <% end %>
+            <% end %>
+          </td>
+    
+          <td>
+            <% if attendance.user == current_user %>
+              <%= link_to '編集', edit_attendance_path(attendance), class: 'btn btn-outline-primary' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

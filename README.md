@@ -25,4 +25,4 @@
 ![go_to_kintai_ER](https://user-images.githubusercontent.com/103027606/172785747-7deb194b-09ab-40a7-8fd8-b4dcba413382.png)
 
 ## 画面遷移図
-![go_to_kintai_screen](https://user-images.githubusercontent.com/103027606/172785691-cc3bc6ab-1199-42a5-99b7-69d28084a684.png)
+![goto_kintai_wireflame](https://user-images.githubusercontent.com/103027606/177082231-e9502a27-8706-4d56-ac7d-f02745ff4c37.png)
