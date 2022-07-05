@@ -32,8 +32,8 @@ gem 'jquery-rails'
 gem 'ransack'
 gem 'kaminari'
 gem 'unicorn'
-gem 'aws-sdk-s3', require: false
-gem 'dotenv-rails'
+#gem 'aws-sdk-s3', require: false
+#gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,6 +50,7 @@ group :development do
   gem "capistrano", "~> 3.10", require: false
   gem "capistrano-rails", "~> 1.6", require: false
   gem 'capistrano-safe-deploy-to'
+  gem 'capistrano3-unicorn'
 end
 
 group :test do
